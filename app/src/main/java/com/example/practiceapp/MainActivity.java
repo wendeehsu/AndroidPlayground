@@ -1,8 +1,10 @@
 package com.example.practiceapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,17 +33,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void addNum(View v) {
-        Button btn = (Button) findViewById(v.getId());
+    public void updateImage(View v) {
+        ImageButton btn = (ImageButton) v;
         if (num == 1) {
-            btn.setText("X");
+            btn.setImageResource(R.drawable.calcifer);
             num = 0;
-            updateText("O");
+            updateText("Cat");
         } else {
-            btn.setText("O");
+            btn.setImageResource(R.drawable.catbus);
             num = 1;
-            updateText("X");
+            updateText("Calcifer");
         }
+        btn.setBackgroundColor(Color.TRANSPARENT);
         v.setEnabled(false);
     }
     protected void updateText(String turn) {
