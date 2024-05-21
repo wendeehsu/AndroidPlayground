@@ -2,21 +2,29 @@ package com.example.practiceapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
-    TextView txt;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
-    protected int num = 0;
+public class MainActivity extends AppCompatActivity {
+    BottomNavigationView bottomNavigationView;
+    HomeFragment homeFragment = new HomeFragment();
+    LabFragment labFragment = new LabFragment();
+    GameFragment gameFragment = new GameFragment();
+
+    public int num = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,30 +32,42 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        txt = (TextView) findViewById(R.id.text1);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+        getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, homeFragment).commit();
+
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                if (id == R.id.home) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, homeFragment).commit();
+                } else if (id == R.id.lab) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, labFragment).commit();
+                } else {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, gameFragment).commit();
+                }
+                return false;
+            }
         });
     }
 
     public void updateImage(View v) {
+        Log.d("click", "updateImage: clicked");
         ImageButton btn = (ImageButton) v;
         if (num == 1) {
             btn.setImageResource(R.drawable.calcifer);
             num = 0;
-            updateText("Cat");
+//                updateText("Cat");
         } else {
             btn.setImageResource(R.drawable.catbus);
             num = 1;
-            updateText("Calcifer");
+//                updateText("Calcifer");
         }
         btn.setBackgroundColor(Color.TRANSPARENT);
         v.setEnabled(false);
     }
-    protected void updateText(String turn) {
-         txt.setText("Next for : "+turn);
-    }
+//        protected void updateText(String turn) {
+//            txt.setText("Next for : "+turn);
+//        }
 }
