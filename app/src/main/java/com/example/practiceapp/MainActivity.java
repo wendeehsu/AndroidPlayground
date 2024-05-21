@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     GameFragment gameFragment = new GameFragment();
 
     public int num = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,21 +53,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateImage(View v) {
-        Log.d("click", "updateImage: clicked");
         ImageButton btn = (ImageButton) v;
         if (num == 1) {
             btn.setImageResource(R.drawable.calcifer);
             num = 0;
-//                updateText("Cat");
         } else {
             btn.setImageResource(R.drawable.catbus);
             num = 1;
-//                updateText("Calcifer");
         }
         btn.setBackgroundColor(Color.TRANSPARENT);
         v.setEnabled(false);
     }
-//        protected void updateText(String turn) {
-//            txt.setText("Next for : "+turn);
-//        }
 }
