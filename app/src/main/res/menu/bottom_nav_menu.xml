@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/baseline_adb_24" />
+    <item android:id="@+id/Lab"
+        android:title="Lab"
+        android:icon="@drawable/baseline_toys_24" />
+    <item android:id="@+id/Totoro"
+        android:title="Totoro"
+        android:icon="@drawable/totoro" />
+</menu>
