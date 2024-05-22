@@ -46,4 +46,40 @@
             android:inputType="textMultiLine" />
     </LinearLayout>
 
+    <EditText
+        android:id="@+id/editTextTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="time"
+        android:inputType="time" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="date"
+        android:inputType="date" />
+
+    <CheckedTextView
+        android:id="@+id/checkedTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:checkMark="@drawable/baseline_adb_24"
+        android:checked="true"
+        android:gravity="center_vertical"
+        android:text="CheckedTextView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="TextInputLayout" />
+    </com.google.android.material.textfield.TextInputLayout>
+
 </LinearLayout>

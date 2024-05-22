@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home"
         android:title="Home"
-        android:icon="@drawable/dust" />
+        android:icon="@drawable/catbus" />
     <item android:id="@+id/lab"
         android:title="Lab"
         android:icon="@drawable/baseline_toys_24" />
