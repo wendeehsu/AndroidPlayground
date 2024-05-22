@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, gameFragment).commit();
                 }
-                return false;
+                return true;
             }
         });
     }
