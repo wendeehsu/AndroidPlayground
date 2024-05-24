@@ -10,13 +10,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
     ListView listView;
-    String [] movieNames = {  "Spirited Away", "My Neighbor Totoro",
+    String [] movieNames = { "Spirited Away", "My Neighbor Totoro",
             "Princess Mononoke", "Howl's Moving Castle",
             "Ponyo", "Kiki's Delivery Service",
             "Castle in the Sky", "Nausicaa of the Valley of the Wind"
+    };
+
+    int [] movieImages = { R.drawable.spirit, R.drawable.totoro,
+            R.drawable.mononoke, R.drawable.howl,
+            R.drawable.ponyo, R.drawable.kiki,
+            R.drawable.sky, R.drawable.nausicaa
     };
 
     public HomeFragment() {
@@ -28,11 +37,15 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        // construct list content
+        ArrayList<ImageData> data = new ArrayList<ImageData>();
+        for (int i = 0; i < movieNames.length; i++) {
+            data.add(new ImageData(movieNames[i], movieImages[i]));
+        }
+
         listView = (ListView) view.findViewById(R.id.movieList);
-        ArrayAdapter<String> arr = new ArrayAdapter<String>(
-                getActivity(),
-                android.R.layout.simple_list_item_1,
-                movieNames);
+        ListAdapter arr = new ListAdapter(getActivity(), data);
         listView.setAdapter(arr);
         return view;
     }

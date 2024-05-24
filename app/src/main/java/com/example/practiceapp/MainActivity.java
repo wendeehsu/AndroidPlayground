@@ -1,31 +1,21 @@
 package com.example.practiceapp;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
+
     BottomNavigationView bottomNavigationView;
     HomeFragment homeFragment = new HomeFragment();
     LabFragment labFragment = new LabFragment();
     GameFragment gameFragment = new GameFragment();
-
-    public int num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

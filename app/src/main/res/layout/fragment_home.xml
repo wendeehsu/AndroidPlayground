@@ -4,12 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="16dp"
     tools:context=".HomeFragment">
 
     <ListView
         android:id="@+id/movieList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        tools:listitem="@layout/list_item"
+        android:dividerHeight="10dp"
+        />
 
 </LinearLayout>
