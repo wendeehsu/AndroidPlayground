@@ -34,9 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.navFrame, homeFragment).commit();
-
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,19 +50,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-    }
-
-    public void updateImage(View v) {
-        ImageButton btn = (ImageButton) v;
-        if (num == 1) {
-            btn.setImageResource(R.drawable.calcifer);
-            num = 0;
-        } else {
-            btn.setImageResource(R.drawable.catbus);
-            num = 1;
-        }
-        btn.setBackgroundColor(Color.TRANSPARENT);
-        v.setEnabled(false);
     }
 }
