@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,16 @@ public class HomeFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.movieList);
         ListAdapter arr = new ListAdapter(getActivity(), data);
         listView.setAdapter(arr);
+
+        ExtendedFloatingActionButton fab = view.findViewById(R.id.addBtn);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         return view;
     }
 }
