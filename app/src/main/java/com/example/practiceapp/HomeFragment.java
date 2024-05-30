@@ -1,5 +1,8 @@
 package com.example.practiceapp;
 
+import static androidx.core.content.ContextCompat.getDrawable;
+
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -24,6 +28,8 @@ public class HomeFragment extends Fragment {
             "Ponyo", "Kiki's Delivery Service",
             "Castle in the Sky", "Nausicaa of the Valley of the Wind"
     };
+
+    Dialog addMovieDialog;
 
     int [] movieImages = { R.drawable.spirit, R.drawable.totoro,
             R.drawable.mononoke, R.drawable.howl,
@@ -51,12 +57,25 @@ public class HomeFragment extends Fragment {
         ListAdapter arr = new ListAdapter(getActivity(), data);
         listView.setAdapter(arr);
 
+        addMovieDialog = new Dialog(getActivity());
+        addMovieDialog.setContentView(R.layout.image_dialog);
+        addMovieDialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        addMovieDialog.getWindow().setBackgroundDrawable(getDrawable(getActivity(), R.drawable.dialog_bg));
+        addMovieDialog.setCancelable(true);
+
+        Button submitBtn = addMovieDialog.findViewById(R.id.submitBtn);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addMovieDialog.dismiss();
+            }
+        });
+
         ExtendedFloatingActionButton fab = view.findViewById(R.id.addBtn);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                addMovieDialog.show();
             }
         });
 
